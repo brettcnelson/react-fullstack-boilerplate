@@ -14,15 +14,16 @@ class App extends React.Component {
       accept: 'application/json'
     })
     .then(res => {
-      console.log(res)
-      // this.setState({api:res});
+      return res.json();
+    })
+    .then(res => {
+      this.setState({api:res.check});
     })
     .catch(err => console.log('ERR', err))
   }
   render() {
     return (
       <div className="App">
-        <div>tset</div>
         {this.state.api}
       </div>
     );

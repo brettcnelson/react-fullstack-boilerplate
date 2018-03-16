@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/brettcnelson/react-fullstack-boilerplate#readme",
   "dependencies": {
+    "babel-core": "^6.26.0",
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "mongoose": "^5.0.10"
