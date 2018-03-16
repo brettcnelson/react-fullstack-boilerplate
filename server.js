@@ -4,24 +4,25 @@ const bodyParser = require('body-parser');
 // const Messages = require('./models/messages');
 
 const app = express();
-const port = process.env.port || 4040;
 
 mongoose.connect('mongodb://localhost/api');
 const db = mongoose.connection;
+
+app.set('port', process.env.port || 4040);
 
 if (process.env.NODE_ENV === 'production') {
 	app.use(express.static('client/build'));
 }
 
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
 app.get('/api', (req, res) => {
 	console.log('API REQ')
-	res.send('Use <code>/api</code> to acces API');
+	res.json('Use <code>/api</code> to acces API');
 });
 
 
-app.listen(port, () => console.log(`express listening on port ${port}`));
+app.listen(app.get('port'), () => console.log(`express listening on port ${app.get('port')}`));
 
 
 
