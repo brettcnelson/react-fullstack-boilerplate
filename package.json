@@ -2,9 +2,10 @@
   "name": "react-fullstack-boilerplate",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "nodemon server.js",
+    "client": "node start-client.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/brettcnelson/react-fullstack-boilerplate/issues"
   },
-  "homepage": "https://github.com/brettcnelson/react-fullstack-boilerplate#readme"
+  "homepage": "https://github.com/brettcnelson/react-fullstack-boilerplate#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.10"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1"
+  }
 }
