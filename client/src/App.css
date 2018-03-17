@@ -1,4 +1,26 @@
 .App {
-  
+	padding:1em;
+	display:grid;
+	grid-template-columns:1fr 1fr 6fr;
+	grid-auto-rows:15vh;
 }
 
+.crud {
+	background-color:black;
+	color:white;
+	font-weight:bold;
+	font-size:4em;
+	text-align:center;
+}
+
+.check {
+	margin:auto;
+}
+
+.failing {
+	color:rgba(255, 0, 0, .5);
+}
+
+.passing {
+	color:rgba(0, 255, 0, 1);
+}
