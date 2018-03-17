@@ -16,13 +16,3 @@ const schema = mongoose.Schema({
 });
 
 module.exports = mongoose.model('entries', schema);
-
-
-        // <div>
-        //   {this.state.get.map((entry,i) =>
-        //     <div key={i}>
-        //       <p>{'Database: ' + entry.database}</p>
-        //       <p>{'Collection: ' + entry.dbCollection}</p>
-        //     </div>
-        //   )}
-        // </div>

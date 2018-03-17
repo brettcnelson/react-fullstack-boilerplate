@@ -5,11 +5,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      api: {},
-      post: {},
-      get: {},
-      put: {    },
-      delete: {}
+      api: undefined,
+      post: undefined,
+      get: undefined,
+      put: undefined,
+      delete: undefined,
+      delay:500
     };
   }
   componentDidMount() {
@@ -19,7 +20,7 @@ class App extends React.Component {
     })
     .then(res => res.json())
     .then(data => {
-      setTimeout(() => this.setState({api:data.check}), 1000);
+      setTimeout(() => this.setState({api:data}), this.state.delay);
     })
     .catch(err => console.log('ERR:', err))
   }
@@ -36,7 +37,7 @@ class App extends React.Component {
       })
       .then(res => res.json())
       .then(data => {
-        setTimeout(() => this.setState({post:data}), 1000);
+        setTimeout(() => this.setState({post:data}), this.state.delay);
       })
      .catch(err => console.log('ERR:', err))
     }
@@ -47,7 +48,7 @@ class App extends React.Component {
       })
       .then(res => res.json())
       .then(res => {
-        setTimeout(() => this.setState({get:res}), 1000);
+        setTimeout(() => this.setState({get:res}), this.state.delay);
       })
      .catch(err => console.log('ERR:', err))
     }
@@ -62,7 +63,7 @@ class App extends React.Component {
         })
         .then(res => res.json())
         .then(data => {
-          setTimeout(() => this.setState({put:data}), 1000);
+          setTimeout(() => this.setState({put:data}), this.state.delay);
         })
        .catch(err => console.log('ERR:', err))
     }
@@ -76,29 +77,39 @@ class App extends React.Component {
       })
       .then(res => res.json())
       .then(res => {
-        setTimeout(() => this.setState({delete:res}), 1000);
+        setTimeout(() => this.setState({delete:res}), this.state.delay);
       })
     }
   }
 
+  passFail(stateKey) {
+    return 'crud ' + (this.state[stateKey] ? 'passing' : 'failing');
+  }
+
+  okay() {
+    return (this.state.delete ? <div className="passing okay">&#10004;</div> : <div className="failing okay">&#10060;</div>);
+  }
+
   render() {
+
     return (
       <div className="App">
-        <div className={'crud ' + (this.state.api ? 'passing' : 'failing')}><code>/api</code></div>
-        <div className="check">PROXY</div>
-        <div className="check result" dangerouslySetInnerHTML={{__html: this.state.api}}></div>
-        <div className={'crud ' + (this.state.post ? 'passing' : 'failing')}>C</div>
-        <div className="check">POST</div>
-        <div><code>{JSON.stringify(this.state.post)}</code></div>
-        <div className={'crud ' + (this.state.get.length ? 'passing' : 'failing')}>R</div>
-        <div className="check">GET</div>
-        <div><code>{JSON.stringify(this.state.get)}</code></div>
-        <div className={'crud ' + (this.state.put ? 'passing' : 'failing')}>U</div>
-        <div className="check">PUT</div>
-        <div><code>{JSON.stringify(this.state.put)}</code></div>
-        <div className={'crud ' + (this.state.delete ? 'passing' : 'failing')}>D</div>
-        <div className="check">DELETE</div>
-        <div><code>{JSON.stringify(this.state.delete)}</code></div>
+        <div className="justify"><code className={this.passFail('api')}>/api</code></div>
+        <div className="justify"><div>PROXY</div></div>
+        <div className="justify left"><code>{JSON.stringify(this.state.api)}</code></div>
+        <div className="justify"><div className={this.passFail('post')}>C</div></div>
+        <div className="justify"><div>POST</div></div>
+        <div className="justify left"><code>{JSON.stringify(this.state.post)}</code></div>
+        <div className="justify"><div className={this.passFail('get')}>R</div></div>
+        <div className="justify"><div>GET</div></div>
+        <div className="justify left"><code>{JSON.stringify(this.state.get)}</code></div>
+        <div className="justify"><div className={this.passFail('put')}>U</div></div>
+        <div className="justify"><div>PUT</div></div>
+        <div className="justify left"><code>{JSON.stringify(this.state.put)}</code></div>
+        <div className="justify"><div className={this.passFail('delete')}>D</div></div>
+        <div className="justify"><div>DELETE</div></div>
+        <div className="justify left"><code>{JSON.stringify(this.state.delete)}</code></div>
+        <div className="justify">{this.okay()}</div>
       </div>
     );
   }

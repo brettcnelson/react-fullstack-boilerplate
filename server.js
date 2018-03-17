@@ -7,8 +7,7 @@ mongoose.connect('mongodb://localhost/default');
 const db = mongoose.connection;
 
 const app = express();
-
-app.set('port', process.env.port || 4040);
+const port = process.env.port || 4040;
 
 if (process.env.NODE_ENV === 'production') {
 	app.use(express.static('client/build'));
@@ -17,7 +16,7 @@ if (process.env.NODE_ENV === 'production') {
 app.use(bodyParser.json());
 
 app.get('/api', (req, res) => {
-	res.json({"check":"Express Proxy Server Connected: Use <code>/api</code> to acces proxy server"});
+	res.json({"check":"EXPRESS /api PROXY SERVER CONNECTED"});
 });
 
 app.post('/api/entries', (req, res) => {
@@ -58,4 +57,4 @@ app.delete('/api/entries/:_id', (req, res) => {
 });
 
 
-app.listen(app.get('port'), () => console.log(`express listening on port ${app.get('port')}`));
+app.listen(port, () => console.log(`express listening on port ${port}`));

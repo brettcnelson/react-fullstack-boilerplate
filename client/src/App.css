@@ -1,27 +1,33 @@
 .App {
 	padding:1em;
 	display:grid;
-	grid-template-columns:1fr 1fr 6fr;
+	grid-template-columns:1fr 1fr 7fr;
 	grid-auto-rows:15vh;
+  background-color:black;
+	color:rgba(255, 255, 255, 1);
+}
+
+.justify {
+	margin:auto;
+}
+
+.left {
+	width:100%;
 }
 
 .crud {
-	background-color:black;
-	color:white;
 	font-weight:bold;
 	font-size:4em;
-	width:100%;
-	text-align:center;
 }
 
 .failing {
-	color:rgba(255, 0, 0, .5);
+	color:rgba(255, 25, 25, 1);
 }
 
 .passing {
-	color:rgba(0, 255, 0, 1);
+	color:rgba(25, 255, 25, 1);
 }
 
-.confirm {
-	grid-column: 1 / -1;
+.okay {
+	font-size:6em;
 }
