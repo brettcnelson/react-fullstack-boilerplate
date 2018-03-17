@@ -39,8 +39,23 @@ app.get('/api/entries', (req, res) => {
 	});
 });
 
-app.put('/api/entries', (req, res) => {
-	defaultCollection.
+app.put('/api/entries/:_id', (req, res) => {
+	defaultCollection.findByIdAndUpdate(req.params._id, req.body, {new:true}, (err, entry) => {
+		if (err) {
+			throw err;
+		}
+		res.json(entry);
+	});
+});
+
+app.delete('/api/entries/:_id', (req, res) => {
+	defaultCollection.findByIdAndRemove(req.params._id, (err, result) => {
+		if (err) {
+			throw err;
+		}
+		console.log(result)
+		res.json(result);
+	});
 });
 
 

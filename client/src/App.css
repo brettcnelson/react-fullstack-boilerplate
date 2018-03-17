@@ -13,10 +13,10 @@
 	text-align:center;
 }
 
-.check {
+/*.check {
 	margin:auto;
 }
-
+*/
 .failing {
 	color:rgba(255, 0, 0, .5);
 }
