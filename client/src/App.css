@@ -10,17 +10,18 @@
 	color:white;
 	font-weight:bold;
 	font-size:4em;
+	width:100%;
 	text-align:center;
 }
 
-/*.check {
-	margin:auto;
-}
-*/
 .failing {
 	color:rgba(255, 0, 0, .5);
 }
 
 .passing {
 	color:rgba(0, 255, 0, 1);
+}
+
+.confirm {
+	grid-column: 1 / -1;
 }

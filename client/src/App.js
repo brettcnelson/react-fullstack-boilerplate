@@ -5,11 +5,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      api: null,
-      post: null,
-      get: [],
-      put: null,
-      delete: null
+      api: {},
+      post: {},
+      get: {},
+      put: {    },
+      delete: {}
     };
   }
   componentDidMount() {
@@ -19,7 +19,6 @@ class App extends React.Component {
     })
     .then(res => res.json())
     .then(data => {
-      console.log(data)
       setTimeout(() => this.setState({api:data.check}), 1000);
     })
     .catch(err => console.log('ERR:', err))
@@ -90,16 +89,16 @@ class App extends React.Component {
         <div className="check result" dangerouslySetInnerHTML={{__html: this.state.api}}></div>
         <div className={'crud ' + (this.state.post ? 'passing' : 'failing')}>C</div>
         <div className="check">POST</div>
-        <div className="check result"><code>{JSON.stringify(this.state.post)}</code></div>
+        <div><code>{JSON.stringify(this.state.post)}</code></div>
         <div className={'crud ' + (this.state.get.length ? 'passing' : 'failing')}>R</div>
         <div className="check">GET</div>
-        <div className="check result"><code>{JSON.stringify(this.state.get[this.state.get.length-1])}</code></div>
+        <div><code>{JSON.stringify(this.state.get)}</code></div>
         <div className={'crud ' + (this.state.put ? 'passing' : 'failing')}>U</div>
         <div className="check">PUT</div>
-        <div className="check result"><code>{JSON.stringify(this.state.put)}</code></div>
+        <div><code>{JSON.stringify(this.state.put)}</code></div>
         <div className={'crud ' + (this.state.delete ? 'passing' : 'failing')}>D</div>
         <div className="check">DELETE</div>
-        <div className="check result"><code>{JSON.stringify(this.state.delete)}</code></div>
+        <div><code>{JSON.stringify(this.state.delete)}</code></div>
       </div>
     );
   }

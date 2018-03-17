@@ -53,7 +53,6 @@ app.delete('/api/entries/:_id', (req, res) => {
 		if (err) {
 			throw err;
 		}
-		console.log(result)
 		res.json(result);
 	});
 });
