@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "node server.js",
-    "dev": "concurrently \"npm run dev-server\" \"npm run client\"",
+    "server": "node server.js",
+    "start": "concurrently \"npm run dev-server\" \"npm run client\"",
     "dev-server": "nodemon server.js",
     "client": "node start-client.js",
-    "heroku-postbuild": "cd client/ && npm install --only=dev && npm install && npm run build && cd .."
+    "heroku-postbuild": "cd client/ && npm install --only=dev && npm install && npm run build"
   },
   "repository": {
     "type": "git",
