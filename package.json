@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "nodemon server.js",
+    "start": "concurrently \"npm run dev-server\" \"npm run client\"",
+    "dev-server": "nodemon server.js",
+    "server": "node server.js",
     "client": "node start-client.js"
   },
   "repository": {
