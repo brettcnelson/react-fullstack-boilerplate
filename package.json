@@ -7,7 +7,7 @@
     "dev": "concurrently \"npm run dev-server\" \"npm run client\"",
     "dev-server": "nodemon server.js",
     "client": "node start-client.js",
-    "heroku-postbuild": "cd client/ && npm install && npm run build && cd.."
+    "heroku-postbuild": "cd client/ && npm install --only=dev && npm install && npm run build && cd.."
   },
   "repository": {
     "type": "git",
