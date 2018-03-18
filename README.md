@@ -2,7 +2,7 @@
 
 ### [create-react-app](https://github.com/facebook/create-react-app) + react-router + express proxy api server + working mongo CRUD with mongoose -- preconfigured to deploy to Heroku ###
 
-##### SETUP and INSTALLATION #####
+### SETUP and INSTALLATION ###
 
 [install mongoDB](https://docs.mongodb.com/manual/installation/) if you don't have it, then in in the terminal run:
 ```
@@ -23,7 +23,7 @@ npm run setup
 
 this installs node modules for the client and the server, and starts the app.
 
-##### USAGE #####
+### USAGE ###
 
 in the future, run:
 ```
@@ -31,14 +31,14 @@ npm start
 ```
 to start the app.
 
-##### DEPLOYMENT #####
+### DEPLOYMENT ###
 
 to deploy to Heroku make sure you have an [account](https://www.heroku.com/) and the [CLI](https://devcenter.heroku.com/articles/heroku-cli).
 
 commit all changes to git, then:
 ```
 heroku create
-heroku config:set MONGO_URI=**_your-remote-mongo-uri_**
+heroku config:set MONGO_URI=your-remote-mongo-uri
 heroku push origin master
 ```
 
