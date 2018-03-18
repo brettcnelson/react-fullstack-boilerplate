@@ -4,17 +4,12 @@
 
 ### SETUP and INSTALLATION ###
 
-[install mongoDB](https://docs.mongodb.com/manual/installation/) if you don't have it, then in in the terminal run:
+[install mongoDB](https://docs.mongodb.com/manual/installation/) if you don't have it, then in the terminal run:
 ```
 mongod
 ```
 
-open a different terminal window. If you don't have nodemon installed run:
-```
-npm install -g nodemon
-```
-
-once you have nodemon, run:
+open a different terminal window and run:
 ```
 git clone https://github.com/brettcnelson/react-fullstack-boilerplate.git
 cd react-fullstack-boilerplate/

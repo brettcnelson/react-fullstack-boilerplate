@@ -10,7 +10,7 @@ const db = mongoose.connection;
 const app = express();
 const port = process.env.PORT || 4040;
 
-app.use(express.static('client/build'));
+process.env.NODE_ENV === 'production' && app.use(express.static('client/build'));
 
 app.use(bodyParser.json());
 

@@ -2,9 +2,9 @@
 	padding:1em;
 	display:grid;
 	grid-template-columns:12.5vw 12.5vw auto;
-	grid-auto-rows:15vh;
+	grid-auto-rows:18vh;
 	color:rgba(255, 255, 255, 1);
-	background-color:black;
+	background-color:rgba(0, 0, 0, 1);
 }
 
 .justify {
@@ -12,8 +12,7 @@
 }
 
 .left {
-	width:100%;
-	padding:1em;
+	margin:1em;
 	overflow:scroll;
 }
 
@@ -35,5 +34,5 @@ pre {
 }
 
 .okay {
-	font-size:6em;
+	font-size:3em;
 }

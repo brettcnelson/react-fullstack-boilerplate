@@ -16,62 +16,60 @@ class Home extends React.Component {
 
   componentDidMount() {
     // check express api proxy feed
-    fetch('/api', {
-      accept: 'application/json'
-    })
-    .then(res => res.json())
-    .then(data => setTimeout(() => this.setState({api:data}), this.state.delay))
-    .catch(err => console.log('ERR:', err));
+    var options = {accept:'application/json'};
+    this.api('/api', options, 'api');
   }
 
   componentDidUpdate(prevProps, prevState) {
+    var options;
     if (prevState.api !== this.state.api) {
       // check api POST
-      fetch('/api/entries', {
+      options = {
         headers: {
           'Content-Type': 'application/json'
         },
         method: 'post',
         body: JSON.stringify({"database":"default","dbCollection":"entries"})
-      })
-      .then(res => res.json())
-      .then(data => setTimeout(() => this.setState({post:data}), this.state.delay))
-      .catch(err => console.log('ERR:', err));
+      };
+      this.api('/api/entries', options, 'post');
     }
     else if (prevState.post !== this.state.post) {
       // check api GET
-      fetch('/api/entries', {
-        accept: 'application/json'
-      })
-      .then(res => res.json())
-      .then(data => setTimeout(() => this.setState({get:data}), this.state.delay))
-      .catch(err => console.log('ERR:', err));
+      options = {accept: 'application/json'};
+      this.api('/api/entries', options, 'get');
     }
     else if (prevState.get !== this.state.get) {
       // check api PUT
-      fetch('/api/entries/' + this.state.get[this.state.get.length-1]._id, {
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          method: 'put',
-          body: JSON.stringify({"database":"UPDATED","dbCollection":"UPDATED"})
-        })
-        .then(res => res.json())
-        .then(data => setTimeout(() => this.setState({put:data}), this.state.delay))
-        .catch(err => console.log('ERR:', err));
+      options = {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'put',
+        body: JSON.stringify({"database":"UPDATED","dbCollection":"UPDATED"})
+      };
+      this.api('/api/entries/' + this.state.get[this.state.get.length-1]._id, options, 'put');
     }
     else if (prevState.put !== this.state.put) {
       // check api DELETE
-      fetch('/api/entries/' + this.state.get[this.state.get.length-1]._id, {
+      options = {
         headers: {
           'Content-Type': 'application/json'
         },
         method: 'delete'
-      })
-      .then(res => res.json())
-      .then(data => setTimeout(() => this.setState({delete:data}), this.state.delay))
-      .catch(err => console.log('ERR:', err));
+      };
+      this.api('/api/entries/' + this.state.get[this.state.get.length-1]._id, options, 'delete');
     }
+  }
+
+  api(url,options,stateKey) {
+    fetch(url, options)
+    .then(res => res.json())
+    .then(data => {
+      var newState = {};
+      newState[stateKey] = data;
+      setTimeout(() => this.setState(newState), this.state.delay)
+    })
+    .catch(err => console.log('ERR:', err));
   }
 
   JSON(stateKey) {
@@ -82,16 +80,12 @@ class Home extends React.Component {
     return 'crud ' + (this.state[stateKey] ? 'passing' : 'failing');
   }
 
-  okay() {
-    return (this.state.delete ? <div className="passing okay">&#10004;</div> : <div className="failing okay">&#10060;</div>);
-  }
-
   render() {
     return (
       <div className="Home">
         <div className="justify"><code className={this.passFail('api')}>/api</code></div>
         <div className="justify"><div>PROXY</div></div>
-        <div className="justify left">{this.JSON('api')}</div>
+        <div className="left">{this.JSON('api')}</div>
         <div className="justify"><div className={this.passFail('post')}>C</div></div>
         <div className="justify"><div>POST</div></div>
         <div className="left">{this.JSON('post')}</div>
@@ -104,7 +98,6 @@ class Home extends React.Component {
         <div className="justify"><div className={this.passFail('delete')}>D</div></div>
         <div className="justify"><div>DELETE</div></div>
         <div className="left">{this.JSON('delete')}</div>
-        <div className="justify">{this.okay()}</div>
       </div>
     );
   }
