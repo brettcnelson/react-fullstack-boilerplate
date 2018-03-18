@@ -2,17 +2,17 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const defaultCollection = require('./models/default');
+const keys = require('./keys');
 
-mongoose.connect('mongodb://localhost/default');
+// const mongoURI = process.env.NODE_ENV === 'production' ? 'mongodb://localhost/default' : 'mongodb://localhost/default';
+
+mongoose.connect(keys.mlab);
 const db = mongoose.connection;
 
 const app = express();
 const port = process.env.PORT || 4040;
 
-if (process.env.NODE_ENV === 'production') {
-	console.log('in prod')
-	app.use(express.static('client/build'));
-}
+process.env.NODE_ENV === 'production' && app.use(express.static('client/build'));
 
 app.use(bodyParser.json());
 
