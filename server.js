@@ -10,6 +10,7 @@ const app = express();
 const port = process.env.port || 4040;
 
 if (process.env.NODE_ENV === 'production') {
+	console.log('in prod')
 	app.use(express.static('client/build'));
 }
 
