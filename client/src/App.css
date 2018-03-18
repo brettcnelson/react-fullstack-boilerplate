@@ -1,10 +1,10 @@
 .App {
 	padding:1em;
 	display:grid;
-	grid-template-columns:1fr 1fr 7fr;
+	grid-template-columns:12.5vw 12.5vw auto;
 	grid-auto-rows:15vh;
-  background-color:black;
 	color:rgba(255, 255, 255, 1);
+	background-color:black;
 }
 
 .justify {
@@ -13,6 +13,12 @@
 
 .left {
 	width:100%;
+	padding:1em;
+	overflow:scroll;
+}
+
+pre {
+	margin:0;
 }
 
 .crud {
