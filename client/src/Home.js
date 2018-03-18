@@ -1,7 +1,7 @@
 import React from 'react';
-import './Grid.css';
+import './Home.css';
 
-class Grid extends React.Component {
+class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,6 +13,7 @@ class Grid extends React.Component {
       delay:750
     };
   }
+
   componentDidMount() {
     // check express api proxy feed
     fetch('/api', {
@@ -20,7 +21,7 @@ class Grid extends React.Component {
     })
     .then(res => res.json())
     .then(data => setTimeout(() => this.setState({api:data}), this.state.delay))
-    .catch(err => console.log('ERR:', err))
+    .catch(err => console.log('ERR:', err));
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -34,10 +35,8 @@ class Grid extends React.Component {
         body: JSON.stringify({"database":"default","dbCollection":"entries"})
       })
       .then(res => res.json())
-      .then(data => {
-        setTimeout(() => this.setState({post:data}), this.state.delay);
-      })
-     .catch(err => console.log('ERR:', err))
+      .then(data => setTimeout(() => this.setState({post:data}), this.state.delay))
+      .catch(err => console.log('ERR:', err));
     }
     else if (prevState.post !== this.state.post) {
       // check api GET
@@ -45,10 +44,8 @@ class Grid extends React.Component {
         accept: 'application/json'
       })
       .then(res => res.json())
-      .then(res => {
-        setTimeout(() => this.setState({get:res}), this.state.delay);
-      })
-     .catch(err => console.log('ERR:', err))
+      .then(data => setTimeout(() => this.setState({get:data}), this.state.delay))
+      .catch(err => console.log('ERR:', err));
     }
     else if (prevState.get !== this.state.get) {
       // check api PUT
@@ -60,10 +57,8 @@ class Grid extends React.Component {
           body: JSON.stringify({"database":"UPDATED","dbCollection":"UPDATED"})
         })
         .then(res => res.json())
-        .then(data => {
-          setTimeout(() => this.setState({put:data}), this.state.delay);
-        })
-       .catch(err => console.log('ERR:', err))
+        .then(data => setTimeout(() => this.setState({put:data}), this.state.delay))
+        .catch(err => console.log('ERR:', err));
     }
     else if (prevState.put !== this.state.put) {
       // check api DELETE
@@ -74,9 +69,8 @@ class Grid extends React.Component {
         method: 'delete'
       })
       .then(res => res.json())
-      .then(res => {
-        setTimeout(() => this.setState({delete:res}), this.state.delay);
-      })
+      .then(data => setTimeout(() => this.setState({delete:data}), this.state.delay))
+      .catch(err => console.log('ERR:', err));
     }
   }
 
@@ -94,7 +88,7 @@ class Grid extends React.Component {
 
   render() {
     return (
-      <div className="Grid">
+      <div className="Home">
         <div className="justify"><code className={this.passFail('api')}>/api</code></div>
         <div className="justify"><div>PROXY</div></div>
         <div className="justify left">{this.JSON('api')}</div>
@@ -116,4 +110,4 @@ class Grid extends React.Component {
   }
 }
 
-export default Grid;
+export default Home;

@@ -7,16 +7,8 @@
     "client": "node start-client.js",
     "heroku-postbuild": "cd client/ && npm install --only=dev && npm install && npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/brettcnelson/react-fullstack-boilerplate.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/brettcnelson/react-fullstack-boilerplate/issues"
-  },
-  "homepage": "https://github.com/brettcnelson/react-fullstack-boilerplate#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.3",

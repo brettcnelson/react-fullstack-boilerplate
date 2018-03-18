@@ -4,9 +4,9 @@ const mongoose = require('mongoose');
 const defaultCollection = require('./models/default');
 
 const mongoURI = process.env.NODE_ENV === 'production' ? process.env.MONGO_URI : 'mongodb://localhost/default';
-
 mongoose.connect(mongoURI);
 const db = mongoose.connection;
+console.log(mongoURI)
 
 const app = express();
 const port = process.env.PORT || 4040;
