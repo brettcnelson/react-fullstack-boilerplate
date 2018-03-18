@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 // const db = mongoose.connection;
 
 const app = express();
-const port = process.env.port || 4040;
+const port = process.env.PORT || 4040;
 
 if (process.env.NODE_ENV === 'production') {
 	console.log('in prod')
