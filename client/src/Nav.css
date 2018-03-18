@@ -1,4 +1,5 @@
 .Nav {
+	height:5%;
 	display:inline-block;
 	width:50%;
 	margin-left:25%;
@@ -8,5 +9,6 @@
 
 .nav-link {
 	text-align:center;
+	padding:2% 0;
 }
 

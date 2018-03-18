@@ -10,7 +10,7 @@ class Grid extends React.Component {
       get: undefined,
       put: undefined,
       delete: undefined,
-      delay:500
+      delay:750
     };
   }
   componentDidMount() {
@@ -23,62 +23,62 @@ class Grid extends React.Component {
     .catch(err => console.log('ERR:', err))
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevState.api !== this.state.api) {
-  //     // check api POST
-  //     fetch('/api/entries', {
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       },
-  //       method: 'post',
-  //       body: JSON.stringify({"database":"default","dbCollection":"entries"})
-  //     })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setTimeout(() => this.setState({post:data}), this.state.delay);
-  //     })
-  //    .catch(err => console.log('ERR:', err))
-  //   }
-  //   else if (prevState.post !== this.state.post) {
-  //     // check api GET
-  //     fetch('/api/entries', {
-  //       accept: 'application/json'
-  //     })
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       setTimeout(() => this.setState({get:res}), this.state.delay);
-  //     })
-  //    .catch(err => console.log('ERR:', err))
-  //   }
-  //   else if (prevState.get !== this.state.get) {
-  //     // check api PUT
-  //     fetch('/api/entries/' + this.state.get[this.state.get.length-1]._id, {
-  //         headers: {
-  //           'Content-Type': 'application/json'
-  //         },
-  //         method: 'put',
-  //         body: JSON.stringify({"database":"UPDATED","dbCollection":"UPDATED"})
-  //       })
-  //       .then(res => res.json())
-  //       .then(data => {
-  //         setTimeout(() => this.setState({put:data}), this.state.delay);
-  //       })
-  //      .catch(err => console.log('ERR:', err))
-  //   }
-  //   else if (prevState.put !== this.state.put) {
-  //     // check api DELETE
-  //     fetch('/api/entries/' + this.state.get[this.state.get.length-1]._id, {
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       },
-  //       method: 'delete'
-  //     })
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       setTimeout(() => this.setState({delete:res}), this.state.delay);
-  //     })
-  //   }
-  // }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.api !== this.state.api) {
+      // check api POST
+      fetch('/api/entries', {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'post',
+        body: JSON.stringify({"database":"default","dbCollection":"entries"})
+      })
+      .then(res => res.json())
+      .then(data => {
+        setTimeout(() => this.setState({post:data}), this.state.delay);
+      })
+     .catch(err => console.log('ERR:', err))
+    }
+    else if (prevState.post !== this.state.post) {
+      // check api GET
+      fetch('/api/entries', {
+        accept: 'application/json'
+      })
+      .then(res => res.json())
+      .then(res => {
+        setTimeout(() => this.setState({get:res}), this.state.delay);
+      })
+     .catch(err => console.log('ERR:', err))
+    }
+    else if (prevState.get !== this.state.get) {
+      // check api PUT
+      fetch('/api/entries/' + this.state.get[this.state.get.length-1]._id, {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          method: 'put',
+          body: JSON.stringify({"database":"UPDATED","dbCollection":"UPDATED"})
+        })
+        .then(res => res.json())
+        .then(data => {
+          setTimeout(() => this.setState({put:data}), this.state.delay);
+        })
+       .catch(err => console.log('ERR:', err))
+    }
+    else if (prevState.put !== this.state.put) {
+      // check api DELETE
+      fetch('/api/entries/' + this.state.get[this.state.get.length-1]._id, {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'delete'
+      })
+      .then(res => res.json())
+      .then(res => {
+        setTimeout(() => this.setState({delete:res}), this.state.delay);
+      })
+    }
+  }
 
   JSON(stateKey) {
     return (<pre><code>{JSON.stringify(this.state[stateKey], null, '\t')}</code></pre>);
