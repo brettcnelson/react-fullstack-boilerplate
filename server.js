@@ -2,11 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const defaultCollection = require('./models/default');
-const keys = require('./keys');
 
-// const mongoURI = process.env.NODE_ENV === 'production' ? 'mongodb://localhost/default' : 'mongodb://localhost/default';
+const mongoURI = process.env.NODE_ENV === 'production' ? process.env.MONGO_URI : 'mongodb://localhost/default';
 
-mongoose.connect(keys.mlab);
+mongoose.connect(mongoURI);
 const db = mongoose.connection;
 
 const app = express();
