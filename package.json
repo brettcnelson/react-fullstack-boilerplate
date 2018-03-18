@@ -7,7 +7,7 @@
     "dev-server": "nodemon server.js",
     "server": "node server.js",
     "client": "node start-client.js",
-    "heroku-postbuild": "node install-client.js"
+    "heroku-postbuild": "cd client/ && npm install && cd .."
   },
   "repository": {
     "type": "git",
