@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "node server.js",
-    "dev": "concurrently \"npm run dev-server\" \"npm run client\"",
+    "start": "concurrently \"npm run dev-server\" \"npm run client\"",
     "dev-server": "nodemon server.js",
     "client": "node start-client.js",
     "heroku-postbuild": "cd client/ && npm install --only=dev && npm install && npm run build"
@@ -20,7 +19,6 @@
   },
   "homepage": "https://github.com/brettcnelson/react-fullstack-boilerplate#readme",
   "dependencies": {
-    "babel-core": "^6.26.0",
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "mongoose": "^5.0.10"
