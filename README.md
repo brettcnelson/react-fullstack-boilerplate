@@ -15,7 +15,6 @@ git clone https://github.com/brettcnelson/react-fullstack-boilerplate.git
 cd react-fullstack-boilerplate/
 npm run setup
 ```
-
 this installs node modules for the client and the server, and starts the app.
 
 ### USAGE ###
@@ -28,13 +27,16 @@ to start the app.
 
 ### DEPLOYMENT ###
 
-to deploy to Heroku make sure you have an [account](https://www.heroku.com/) and the [CLI](https://devcenter.heroku.com/articles/heroku-cli).
+To deploy to Heroku make sure you have an [account](https://www.heroku.com/) and the [CLI](https://devcenter.heroku.com/articles/heroku-cli). If you don't have a remote mongo databse, [mLab](https://mlab.com/signup/) is very easy to get up and running.
 
-commit all changes to git, then:
+Create and configure the app by running:
 ```
 heroku create
 heroku config:set MONGO_URI=your-remote-mongo-uri
+```
+Look at the Heroku docs if you want to set the name of your app from the CLI.  But it's easy to rename it later if you want.
+
+Whenever you want to deploy, commit all changes to git, then:
+```
 heroku push origin master
 ```
-
-if you don't have a remote mongo databse, [mLab](https://mlab.com/signup/) is very easy to setup.
