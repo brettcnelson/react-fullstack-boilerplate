@@ -27,7 +27,7 @@ to start the app.
 
 ### DEPLOYMENT ###
 
-To deploy to Heroku make sure you have an [account](https://www.heroku.com/) and the [CLI](https://devcenter.heroku.com/articles/heroku-cli). If you don't have a remote mongo databse, [mLab](https://mlab.com/signup/) is very easy to get up and running.
+To deploy to Heroku make sure you have an [account](https://www.heroku.com/) and the [CLI](https://devcenter.heroku.com/articles/heroku-cli). If you don't have a remote mongo database, [mLab](https://mlab.com/signup/) is very easy to get up and running.
 
 Create and configure the app by running:
 ```
