@@ -38,5 +38,5 @@ Look at the Heroku docs if you want to set the name of your app from the CLI.  B
 
 Whenever you want to deploy, commit all changes to git, then:
 ```
-heroku push origin master
+git push heroku master
 ```
